@@ -1,0 +1,36 @@
+<div>
+    <mat-toolbar color = "primary" style = "height: 5em">
+        <span class = "header-img">
+          <img src = "../../../../assets/images/ndma.png" height="110" width = "150"/>
+        </span>
+    </mat-toolbar>
+<div class = "page" fxLayout="column" fxLayoutAlign="center center">
+  <div class = "card">
+      <mat-card>
+          <form action="" (ngSubmit)="send()">
+              <div class="padding" fxLayout="column" fxLayoutGap="16px" [formGroup]="loginForm">
+                <div fxFlex="auto" fxLayout="column">
+                  <mat-form-field fxFlex="grow">
+                    <mat-label>E-Mail</mat-label>
+                    <input autocomplete="off" matInput required formControlName="email">
+                    <mat-error *ngIf="loginForm.get('email').hasError('required')">We need an email address to log you in</mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input autocomplete="off" matInput [type]="inputType" formControlName="password" required>
+                    <button type="button" mat-icon-button matSuffix (click)="toggleVisibility()" matTooltip="Toggle Visibility">
+                      <mat-icon *ngIf="visible">visibility</mat-icon>
+                      <mat-icon *ngIf="!visible">visibility_off</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm.get('password').hasError('required')">We need a password to log you in</mat-error>
+                  </mat-form-field>
+                </div>
+                <button type="submit" class="sos-btn" mat-raised-button [disabled]="!loginForm.valid">
+                  SIGN IN
+                </button>
+              </div>
+              </form>
+      </mat-card>
+  </div>
+</div>
+</div>

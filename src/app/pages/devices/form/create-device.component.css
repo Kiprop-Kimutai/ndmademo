@@ -1,0 +1,32 @@
+.body{
+    min-height: 95vh;
+}
+mat-form-field{
+    width: 100%;
+    font-weight: 200;
+    font-size: 0.7em;
+}
+mat-card {
+    width: 100%;
+    height: 30vh;
+}
+tr{
+    height: 8vh;
+}
+.device-form {
+    position: absolute;
+    margin-top: 10vh;
+    height: auto;
+    left:25%;
+    right:25%;
+    box-shadow: 10px 10px 5px silver;
+}
+.submit {
+    position: absolute;
+    left: 40%;
+    right: 40%;
+}
+span {
+    font-weight: 600;
+    font-size: 0.9em;
+}

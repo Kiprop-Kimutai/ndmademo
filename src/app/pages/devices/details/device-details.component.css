@@ -1,0 +1,53 @@
+.body {
+    min-height: 95vh;
+    overflow-y: scroll;
+}
+#sprite {
+    width: 200px;
+    height: 400px;
+    border: 1px solid #aaa; 
+}
+#device-avatar {
+    position: absolute;
+    margin-top: 10vh;
+    left:30%;
+    right: 30%;
+}
+.img {
+    position: relative;
+    margin-bottom: 30vh;
+    margin-left: -20vw;
+    left:30%;
+    right: 30%;
+    z-index: 3;
+}
+#circle{
+background: #aaa;
+}
+#circle:before {
+    position: absolute;
+    content: '';
+    background-image: url('../../../../assets/images/newpos82101.png');
+    /**background: rgba(0,0,0, 0.5); /*partially transparent image*/
+    width: 200px;
+    height:400px;
+    pointer-events: none;
+}
+#device:before {
+    position: absolute;
+    content: '';
+    background-image: url('../../../../assets/images/newpos82101.png');
+    /**background: rgba(0,0,0, 0.5); /*partially transparent image*/
+    width: 200px;
+    height:400px;
+    pointer-events: none;
+}
+#sprite:before {
+    position: absolute;
+    content: '';
+    background-image: url('../../../../assets/images/newpos82101.png');
+    /**background: rgba(0,0,0, 0.5); /*partially transparent image*/
+    width: 200px;
+    height:400px;
+    pointer-events: none;
+}

@@ -1,0 +1,32 @@
+<div class = "body">
+    <div class = "agent-form">
+    <mat-card>
+        <form [formGroup] = "agentFormGroup" (ngSubmit) = "update()">
+            <table>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>till number</mat-label>
+                            <input matInput formControlName = "tillNumber"/>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>msisdn</mat-label>
+                            <input matInput formControlName = "msisdn"/>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-slide-toggle formControlName = "active" color = "primary">active</mat-slide-toggle>
+                    </td>
+                </tr>
+            </table>
+            <button [disabled] = "agentFormGroup.status === 'INVALID'" mat-raised-button color = "primary" type = "submit" class = "submit">update</button>
+        </form>
+    </mat-card>
+  </div>
+</div>

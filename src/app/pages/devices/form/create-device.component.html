@@ -1,0 +1,70 @@
+<div class = "body">
+    <div class = "device-form">
+    <mat-card>
+        <form [formGroup] = "deviceFormGroup" (ngSubmit) = "create()">
+            <table>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>serial no</mat-label>
+                            <input matInput formControlName = "serialno"/>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>model</mat-label>
+                            <input matInput formControlName = "model"/>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>kernel</mat-label>
+                            <input matInput formControlName = "kernel"/>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                        <mat-label>group</mat-label>
+                        <mat-select formControlName = "group">
+                            <mat-option *ngFor="let group of groups" [value]="group">
+                            {{group}}
+                            </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>firmware</mat-label>
+                            <mat-select formControlName = "firmware">
+                                <mat-option *ngFor = "let firmware of firmware" [value] = "firmware">
+                                    {{firmware}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>agent</mat-label>
+                            <mat-select (selectionChange) = "setAgentId($event)">
+                                <mat-option *ngFor = "let msisdn of msidns" [value] = "msisdn">
+                                    {{msisdn}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <mat-slide-toggle formControlName = "active" color = "primary">active</mat-slide-toggle>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+            <button [disabled] = "deviceFormGroup.status === 'INVALID'" mat-raised-button color = "primary" type = "submit" class = "submit">create</button>
+        </form>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class = "body">
+  <mat-card>
+    <form [formGroup] = "uploadForm">
+      <div>
+        <mat-form-field>
+          <mat-label>SELECT ENTITY TO UPLOAD</mat-label>
+          <mat-select formControlName="route">
+            <mat-option *ngFor="let sector of options" [value]="sector.code">{{ sector.name}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+          <input style = "display: none;" type = "file" (change) = "onFileUpload($event)" #fileInputHandler/>
+          <div style="margin-bottom: 20px">
+            <button style = "color: #FFFFFF; margin-left:40%;" color = "primary" mat-raised-button  type = "button" (click) = "fileInputHandler.click()">select file</button>
+          </div>
+
+        <div fxLayout.gt-sm="row" fxLayoutGap.gt-sm="30px">
+          <div  fxFlex>
+            <!--<button type="submit" color="accent" mat-raised-button fxFlex (click) = "uploadFile()">
+              UPLOAD FILE
+            </button>-->
+            <button class = "upload-button" mat-raised-button class = "upload-button" matTooltip="upload csv" (click) = "uploadFile()" [disabled] = "!validFile">
+              <img src = "../../../../assets/icons/upload1.png"/>
+          </button>
+          </div>
+          <div fxFlex>
+            <button  class = "upload-button" fxFlexOffset = "85%" type="button" mat-raised-button  (click)="cancel()" matTooltip="cancel">
+              <img src = "../../../../assets/icons/cancel-big.png"/>
+            </button>
+          </div>
+        </div>
+        <div [hidden] = "hideProgress" class = "mat-progress">
+          <!--<mat-progress-bar color = "primary" mode="determinate" value="40"></mat-progress-bar> -->
+          <mat-progress-bar
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="value"
+            [bufferValue]="bufferValue">
+          </mat-progress-bar>
+          <span style = "display:block;margin-left:40%">progress {{value}} %</span>
+        </div>
+      </div>
+    </form>
+    </mat-card>
+</div>
+
+  

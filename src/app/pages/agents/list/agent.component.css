@@ -1,0 +1,45 @@
+.body{
+    min-height: 95vh;
+    overflow-y: scroll;
+}
+mat-card{
+    width:95%;
+    margin: 8px;
+}
+table{
+    width:100%;
+}
+tr:hover{
+    background-color: aliceblue;
+}
+td {
+    font-weight: 100;
+    font-size: 0.8em;
+}
+.actions{
+    position: relative;
+    left:80%;
+}
+input[type=checkbox] {
+    display: none;
+}  
+.container img {
+    margin: 100px;
+    transition: transform 0.25s ease;
+    cursor: zoom-in;
+}
+  
+input[type=checkbox]:checked ~ label > img {
+transform: scale(2);
+cursor: zoom-out;
+}
+.upload-screen{
+    position: relative;
+    margin-top: 5vh;
+    left: 40%;
+    right: 40%;
+    width: 20%;
+}
+.upload-button {
+    box-shadow: 10px 10px 5px silver;
+}
