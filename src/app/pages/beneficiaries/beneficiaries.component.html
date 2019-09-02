@@ -1,0 +1,62 @@
+<div class = "body">
+    <div class = "table-card-shadow">
+    <mat-card>
+        <div >
+            <mat-form-field class = "filterField">
+                    <input  matInput (keyup)= "filterBeneficiaries($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+    <table mat-table [dataSource]="beneficiaries" matSort class="mat-elevation-z8 table table-hover table-striped table-condensed">
+        <!-- id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id. </th>
+            <td mat-cell *matCellDef="let beneficiary;">{{beneficiary.id}} </td>
+        </ng-container>
+
+        <!-- firstname Column -->
+        <ng-container matColumnDef="firstname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> First name </th>
+            <td mat-cell *matCellDef="let beneficiary"> {{beneficiary.firstname}} </td>
+        </ng-container>
+
+        <!-- lastname Column -->
+        <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Last name</th>
+            <td mat-cell *matCellDef="let beneficiary"> {{beneficiary.lastname}} </td>
+        </ng-container>
+
+        <!-- county Column -->
+        <ng-container matColumnDef="county">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> County </th>
+            <td mat-cell *matCellDef="let beneficiary"> {{beneficiary.county}} </td>
+        </ng-container>
+        <!-- status column-->
+        <ng-container matColumnDef="active">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>status</th>
+            <td mat-cell *matCellDef="let beneficiary">
+            <span *ngIf="beneficiary.status">Active</span>
+            <span *ngIf="!beneficiary.status">Inactive</span>
+            </td>
+        </ng-container>
+        
+        <!-- idnumber Column -->
+        <ng-container matColumnDef="idnumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id number </th>
+            <td mat-cell *matCellDef="let beneficiary"> {{beneficiary.idnumber}} </td>
+        </ng-container>
+        <!-- createdAt Column -->
+        <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> createdAt </th>
+            <td mat-cell *matCellDef="let beneficiary"> {{beneficiary.createdAt | date}} </td>
+        </ng-container>
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></tr>
+</table>
+<mat-paginator [length]= "dataLength"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="[1,2, 3, 5, 10, 25, 100]"
+                (page) = "pageEvent = $event" (page) = "paginateValues(pageEvent.pageSize,pageEvent.pageIndex)">
+</mat-paginator >
+</mat-card>
+</div>
+</div>

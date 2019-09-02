@@ -19,7 +19,11 @@
                     <td>
                         <mat-form-field>
                             <mat-label>kernel</mat-label>
-                            <input matInput formControlName = "kernel"/>
+                            <mat-select formControlName = "kernel">
+                                <mat-option *ngFor="let kernel of kernels" [value]="kernel">
+                                {{kernel}}
+                                </mat-option>
+                            </mat-select>
                         </mat-form-field>
                     </td>
                 </tr>

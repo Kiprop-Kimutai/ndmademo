@@ -5,7 +5,7 @@
         <mat-form-field>
           <mat-label>SELECT ENTITY TO UPLOAD</mat-label>
           <mat-select formControlName="route">
-            <mat-option *ngFor="let sector of options" [value]="sector.code">{{ sector.name}} </mat-option>
+            <mat-option *ngFor="let option of options" [value]="option.code">{{ option.name}} </mat-option>
           </mat-select>
         </mat-form-field>
           <input style = "display: none;" type = "file" (change) = "onFileUpload($event)" #fileInputHandler/>

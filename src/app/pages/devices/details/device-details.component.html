@@ -1,7 +1,75 @@
 <div class = "body" *ngIf = "render">
     <div>
-        <svg id = "device-avatar" height = "400" width = "400">
-        <circle id = "circle" cx = "200" cy = "200" r = "180" stroke = "lightblue" [ngStyle] = "getStyleForDevice()"/>
+        <svg id = "device-avatar" height = "200" width = "200">
+        <circle id = "circle" cx = "100" cy = "100" r = "80" stroke = "lightblue" [ngStyle] = "getStyleForDevice()"/>
         </svg>
+        <img id = "image" src = "../../../../assets/images/newpos82101.png" height = "100" width = "50"/>
+    </div>
+    <div>
+        <mat-card>
+            <form [formGroup] = "deviceFormGroup">
+                <table>
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <mat-label>Serial no</mat-label>
+                                <input matInput formControlName = "serialno"/>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Model</mat-label>
+                                <input matInput formControlName = "model"/>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Kernel</mat-label>
+                                <mat-select formControlName = "kernel" name="kernel">
+                                    <mat-option *ngFor="let kernel of kernels" [value]="kernel">
+                                    {{kernel}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <mat-label>Group</mat-label>
+                                <mat-select formControlName = "group" name="group">
+                                    <mat-option *ngFor="let group of groups" [value]="group">
+                                    {{group}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Firmware</mat-label>
+                                <input matInput formControlName = "firmware"/>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Assigned Firmware</mat-label>
+                                <mat-select formControlName = "assigned_firmware" name="assigned_firmware">
+                                    <mat-option *ngFor="let current_firmware of firmware" [value]="current_firmware">
+                                    {{current_firmware}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <mat-label>Agent Id</mat-label>
+                                <input matInput formControlName = "agentId"/>
+                            </mat-form-field>
+                            <mat-slide-toggle  formControlName = "active" color = "primary">active</mat-slide-toggle>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class = "update-button" mat-raised-button color = "primary" [disabled] = "!canUpdateDeviceDetails()" (click) = "update()">update</button>
+                            <button class = "delete-button" mat-raised-button color = "primary" (click) = "delete()">delete</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </mat-card>
     </div>
 </div>

@@ -11,9 +11,10 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavListComponent } from '../app/pages/layout/navlist.component';
 import { FileUploadComponent } from './shared/file-upload/file-upload.component';
+import { PageNotFoundComponent } from './shared/page-not-found.component';
 @NgModule({
   declarations: [
-    AppComponent, DashboardComponent, LayoutComponent, NavListComponent, FileUploadComponent
+    AppComponent, DashboardComponent, LayoutComponent, NavListComponent, FileUploadComponent, PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

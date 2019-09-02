@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { FileUploadComponent } from './shared/file-upload/file-upload.component';
+import { PageNotFoundComponent } from './shared/page-not-found.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -25,6 +26,10 @@ const routes: Routes = [
         loadChildren: './pages/agents/agent.module#AgentModule'
       },
       {
+        path: 'beneficiaries',
+        loadChildren: './pages/beneficiaries/beneficiaries.module#BeneficiariesModule'
+      },
+      {
         path: 'bulkoperations',
         children: [
           {
@@ -35,15 +40,20 @@ const routes: Routes = [
       },
       {
         path: '',
-        component: DashboardComponent,
+        redirectTo: '/home/dashboard',
         pathMatch: 'full'
-
       }
     ]
   },
   {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+
+  },
+  {
     path: '**',
-    redirectTo: 'login'
+    component: PageNotFoundComponent
   }
 ];
 

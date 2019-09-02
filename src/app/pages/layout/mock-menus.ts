@@ -13,10 +13,7 @@ export const MENUS = [
             new SubMenus('list', 'Devices List', 'link')
       ]),
       // new Menu('beneficiaries', 'Beneficiaries', 'beneficiaries', 'link'),
-      new Menu('beneficiaries', 'Beneficiaries', 'beneficiaries', 'parent', [
-            new SubMenus('list', 'Beneficiary List', 'link'),
-            new SubMenus('cycles', 'Cycles', 'link')
-      ]),
+      new Menu('beneficiaries', 'Beneficiaries', 'beneficiaries', 'link'),
       new Menu('accessories', 'Accessories', 'accessories', 'link'),
       new Menu('bulkoperations', 'Bulk Operations', 'operations', 'parent', [
             new SubMenus('upload', 'Upload Entities', 'link')

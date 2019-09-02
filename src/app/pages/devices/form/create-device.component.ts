@@ -15,6 +15,7 @@ export class CreateDeviceFormComponent implements OnInit {
     deviceFormGroup: FormGroup;
     groups = ['uat', 'demo', 'actiondesk'];
     firmware = ['1.0.0', '1.1.3', '1.2.0', '2.0.0'];
+    kernels = ['1.1.3-aa', '1.2.3', '1.2.3-aa', '1.2.5-aa'];
     agents: Agent[];
     msidns: Array<any>;
     constructor(private fb: FormBuilder, private agentService: AgentService, private messagingService: MessagingService,

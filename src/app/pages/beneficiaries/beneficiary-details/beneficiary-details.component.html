@@ -1,0 +1,68 @@
+<div class="body">
+    <div class = "edit-form">
+    <mat-card>
+        <form [formGroup] = "beneficiaryFormGroup" (ngSubmit) = "update()">
+            <table>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>First name</mat-label>
+                            <input matInput formControlName = "firstname"/>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Middle name</mat-label>
+                            <input matInput formControlName = "middlename"/>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Last name</mat-label>
+                            <input matInput formControlName = "lastname"/>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>Phone</mat-label>
+                            <input matInput formControlName = "phone"/>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Id number</mat-label>
+                            <input matInput formControlName = "idnumber"/>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>County</mat-label>
+                            <input matInput formControlName = "county"/>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>Date created</mat-label>
+                            <input matInput formControlName = "createdAt"/>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Card number</mat-label>
+                            <input matInput formControlName = "cardnumber"/>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Valid until</mat-label>
+                            <input matInput [matDatepicker]="programvalidity" formControlName = "programvalidity">
+                            <mat-datepicker-toggle matSuffix [for]="programvalidity"></mat-datepicker-toggle>
+                            <mat-datepicker #programvalidity></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-slide-toggle style = "position: relative; left: 15%" (change) = "toggleBeneficiaryStatus($event)" color = "primary" [checked] = "beneficiaryStatus">Status</mat-slide-toggle>
+                        <button type = "submit" mat-raised-button style = "position: relative; left:65%" matTooltip="update beneficiary">
+                                <img src = "../../../../assets/icons/ios-update.png"/>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </mat-card>
+    </div>
+</div>

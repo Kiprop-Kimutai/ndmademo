@@ -1,0 +1,17 @@
+.body {
+    min-height: 95vh;
+    overflow-y: scroll
+}
+mat-card {
+    margin: 5% 8px 8px 8px;
+
+}
+table {
+    width: 100%;
+}
+tr:hover {
+    background-color: aliceblue
+}
+.table-card-shadow {
+    box-shadow: 10px 10px 5px lightgray;
+}

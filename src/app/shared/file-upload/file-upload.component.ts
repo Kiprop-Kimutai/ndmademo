@@ -71,12 +71,36 @@ export class FileUploadComponent implements OnInit {
                 this.value = Math.round(event.loaded / event.total * 100);
                 console.log('upload progress ' + Math.round(event.loaded / event.total * 100) + '%');
             } else if (event.type === HttpEventType.Response) {
+                console.log(event);
                 console.log(event.body);
                 this.hideProgress = true;
                 this.enableOpacity = false;
                 const key = 'response_message';
                 const response = event.body as ApiResponse;
-                this.messagingService.alert(response.response_message);
+                if (!response.response_status) {
+                  this.messagingService.alert(`${response.response_message[0].type} ~ ${response.response_message[0].message}`);
+                } else {
+                  this.messagingService.alert('file upload success');
+                  switch (route.route) {
+                    case 'agents':
+                      this.router.navigate(['/home/agents']);
+                      break;
+                    case 'beneficiaries':
+                      this.router.navigate(['/home/beneficiaries']);
+                      break;
+                    case 'devices':
+                      this.router.navigate(['/home/devices']);
+                      break;
+                    case 'accessories':
+                      this.router.navigate(['/home/accessories']);
+                      break;
+                    case 'cycles':
+                      this.router.navigate(['/home/cycles']);
+                      break;
+                      default:
+                        break;
+                  }
+                }
             }
         });
 
