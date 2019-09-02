@@ -12,6 +12,7 @@
     margin: 10px;
     top: 15vh;
     width: 80%;
+    box-shadow: 8px 8px 5px silver;
   }
   .mat-form-field {
     width: 100%;
