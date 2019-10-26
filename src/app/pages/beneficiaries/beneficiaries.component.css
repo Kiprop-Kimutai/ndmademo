@@ -1,6 +1,7 @@
 .body {
     min-height: 95vh;
-    overflow-y: scroll
+    overflow-y: scroll;
+    width: 100%;
 }
 mat-card {
     margin: 5% 8px 8px 8px;
@@ -14,4 +15,13 @@ tr:hover {
 }
 .table-card-shadow {
     box-shadow: 10px 10px 5px lightgray;
+}
+mat-paginator {
+    position: relative;
+}
+
+@media only screen and (max-device-width: 600px) {
+    .body {
+        width: 200%;
+    }
 }

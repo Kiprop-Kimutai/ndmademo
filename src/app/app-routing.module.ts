@@ -1,21 +1,30 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, RouteReuseStrategy } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { FileUploadComponent } from './shared/file-upload/file-upload.component';
+import { RegionsComponent } from './pages/regions/regions.component';
+import { RegionFormComponent } from './pages/regions/forms/region.form.component';
 import { PageNotFoundComponent } from './shared/page-not-found.component';
+import { CustomReuseStrategy } from './route-reuse-strategy';
+import { AuthGuardService } from './auth-guard.service';
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: './pages/login/login.module#AppLoginModule'
+    loadChildren: './pages/login/login.module#AppLoginModule',
+    data: {animation: 'Login'}
   },
   {
     path: 'home',
     component: LayoutComponent,
+    canActivate: [AuthGuardService],
+    // data: {animation: 'Home'},
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        data: {animation: 'Dashboard'},
+        canActivate: [AuthGuardService]
       },
       {
         path: 'devices',
@@ -34,9 +43,20 @@ const routes: Routes = [
         children: [
           {
             path: 'upload',
-            component: FileUploadComponent
+            component: FileUploadComponent,
+            data: {animation: 'Upload'}
           }
         ]
+      },
+      {
+      path: 'regions',
+      component: RegionsComponent,
+      data: {animation: 'Regions'}
+      },
+      {
+        path: 'regions/forms',
+        component: RegionFormComponent,
+        data: {animation: 'RegionForm', region: {}}
       },
       {
         path: '',
@@ -59,6 +79,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  providers: [
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

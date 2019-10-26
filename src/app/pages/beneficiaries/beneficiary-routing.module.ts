@@ -6,7 +6,8 @@ import { Beneficiary } from '../../models/beneficiary';
 const routes: Routes = [
     {
         path: '',
-        component: BeneficiaryComponent
+        component: BeneficiaryComponent,
+        data: {animation: 'BeneficiaryList'}
     },
     {
         path: 'details',

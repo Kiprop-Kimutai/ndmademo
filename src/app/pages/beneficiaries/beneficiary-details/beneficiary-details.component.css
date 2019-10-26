@@ -1,6 +1,7 @@
 .body {
     min-height: 95vh;
     overflow-y: scroll;
+    width: 100%;
 }
 mat-card {
     margin: 10% 8px 8px 8px;
@@ -14,4 +15,10 @@ mat-form-field {
 }
 .edit-form {
     box-shadow: 10px 15px 3px lightgray;
+}
+
+@media only screen and (max-device-width: 600px) {
+    .body{ 
+        width: 200%;
+    }
 }

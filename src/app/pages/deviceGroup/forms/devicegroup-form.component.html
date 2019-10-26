@@ -1,0 +1,122 @@
+<div class = "body">
+    <div *ngIf = "create">
+        <mat-card>
+            <div class = "form">
+                <form [formGroup] = "deviceGroupFormGroup" (ngSubmit) = "addDeviceGroup()">
+                    <table>
+                        <tr>
+                            <td>
+                                <mat-form-field>
+                                    <mat-label>name</mat-label>
+                                    <input matInput formControlName = "name"/>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field>
+                                    <mat-label>model</mat-label>
+                                    <mat-select formControlName = "model">
+                                        <mat-option *ngFor="let model of models" [value]="model">
+                                            {{model}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <mat-form-field>
+                                    <mat-label>firmware</mat-label>
+                                    <mat-select formControlName = "firmware" (selectionChange) = "onFirmwareSelect($event)">
+                                        <mat-option *ngFor="let version of versions" [value]="version">
+                                            {{version}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field>
+                                    <mat-label>region</mat-label>
+                                    <mat-select formControlName = "regionId">
+                                        <mat-option *ngFor = "let region of regions" [value] = "region.id">{{region.name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <button type = "submit" mat-raised-button color = "primary" [disabled] = "deviceGroupFormGroup.status === 'INVALID'">create</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </mat-card>
+    </div>
+    <div *ngIf = "edit">
+        <mat-card>
+                <div class = "form">
+                        <form [formGroup] = "deviceGroupFormGroup" (ngSubmit) = "updateDeviceGroup()">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <mat-label>name</mat-label>
+                                            <input matInput formControlName = "name"/>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <mat-label>model</mat-label>
+                                            <input matInput formControlName = "model"/>
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <mat-label>firmware</mat-label>
+                                            <mat-select formControlName = "firmware" (selectionChange) = "onFirmwareSelect($event)">
+                                                <mat-option *ngFor="let version of versions" [value]="version">
+                                                    {{version}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <mat-label>firmware history</mat-label>
+                                            <input matInput formControlName = "firmwareHistory"/>
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <mat-form-field>
+                                            <mat-label>region</mat-label>
+                                            <input matInput formControlName = "regionId"/>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <mat-label>createdAt</mat-label>
+                                            <input matInput formControlName = "createdAt"/>
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <mat-form-field>
+                                        <mat-label>updatedAt</mat-label>
+                                        <input matInput formControlName = "updatedAt"/>
+                                    </mat-form-field>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <button type = "submit" mat-raised-button color = "primary" [disabled] = "deviceGroupFormGroup.status === 'INVALID'">update</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+        </mat-card>
+    </div>
+</div>

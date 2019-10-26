@@ -5,6 +5,7 @@ import { paginatorFunction } from '../../../shared/paginator.function';
 import {PageEvent} from '@angular/material/typings/esm5/paginator';
 import { Agent } from '../../../models/agent';
 import { Router } from '@angular/router';
+import { ItemsRoutingService } from '../../layout/layout-routing.service';
 let queryString = '';
 @Component({
     selector: 'app-agent-component',
@@ -25,7 +26,9 @@ export class AgentComponent implements OnInit {
     isEdit = false;
     dataLength: number;
     createNewAgent = false;
-    constructor( private agentService: AgentService, private router: Router) {}
+    constructor( private agentService: AgentService, private router: Router, itemsRouting: ItemsRoutingService) {
+      itemsRouting.itemChange$.next(Math.floor(Math.random() * 2));
+    }
     getAgents() {
         this.agentService.fetchAgents().subscribe(data => {
           this.response = data;

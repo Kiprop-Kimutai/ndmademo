@@ -1,0 +1,28 @@
+<div class = "body">
+    <mat-card>
+        <form [formGroup] = "regionFormGroup" (ngSubmit) = "addRegion()">
+            <div>
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName = "name"/>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-label class = "co-ordinateLabel">Latitude</mat-label><br>
+                <mat-slider color = "primary" min="-90" max="90" step="0.01" value="0" thumbLabel tickInterval = "1" formControlName = "latitude"
+                (change) = "onLatitudeChange($event)"></mat-slider>
+                <span class = "co-ordinateValue">{{latitudeValue}}</span>
+            </div>
+            <div>
+                <mat-label class = "co-ordinateLabel">Longitude</mat-label><br>
+                <mat-slider color = "primary" min="-180" max="180" step="0.01" value="0" thumbLabel tickInterval = "1" formControlName = "longitude"
+                (change) = "onLongitudeChange($event)"></mat-slider>
+                <span class = "co-ordinateValue">{{longitudeValue}}</span>
+            </div>
+            <div>
+                <button  type = "submit" class = "save-button" mat-raised-button color = "primary" [disabled] = "regionFormGroup.status === 'INVALID'">save</button>
+                <button  type = "button" class = "cancel-button" mat-raised-button color = "primary" (click) = "cancel()">cancel</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

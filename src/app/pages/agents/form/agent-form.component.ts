@@ -20,8 +20,8 @@ export class AgentFormComponent implements OnInit {
     }
     createAgentFormGroup() {
         this.agentFormGroup = this.fb.group({
-            tillNumber: new FormControl('', [Validators.required]),
-            msisdn: new FormControl('', [ Validators.required]),
+            tillNumber: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(8)]),
+            msisdn: new FormControl('', [ Validators.required, Validators.pattern(/[123*+abcd]/)]),
             active: new FormControl(false, [Validators.required])
         });
     }
@@ -50,3 +50,5 @@ export class AgentFormComponent implements OnInit {
         this.fetchAgents();
     }
 }
+
+

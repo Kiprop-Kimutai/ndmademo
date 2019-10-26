@@ -9,6 +9,6 @@ import {delay} from 'rxjs/operators';
 })
 export class MenuService {
   fetchMenus(): Observable<Menu[]> {
-    return of(MENUS).pipe(delay(1000));
+    return of(MENUS).pipe(delay(500));
   }
 }

@@ -29,4 +29,24 @@ export class DeviceService {
         // tslint:disable-next-line: max-line-length
         return this.http.delete<ApiResponse>(`${this.API}/devices/${device.id}/${device.serialno}`,  {headers: {Authorization: `Bearer ${this.authService.getToken()}`}});
     }
+
+    fetchDeviceGroups(): Observable<any> {
+        return this.http.get<ApiResponse>(`${this.API}/devicegroup`, {headers: { Authorization: `Bearer ${this.authService.getToken()}`}});
+    }
+    addDeviceGroup(deviceGroup): Observable<any> {
+        return this.http.post<ApiResponse>(`${this.API}/devicegroup`, deviceGroup, {headers: {Authorization:
+        `Bearer ${this.authService.getToken()}`,
+        'Content-Type': 'application/json'}});
+    }
+    editDeviceGroup(deviceGroup): Observable<any> {
+        // tslint:disable-next-line: radix
+        return this.http.put<ApiResponse>(`${this.API}/devicegroup/${parseInt(deviceGroup.id)}`, deviceGroup, {headers:
+        {Authorization: `Bearer ${this.authService.getToken()}`,
+        'Content-Type': 'application/json'}});
+    }
+    deleteDeviceGroup(deviceGroup): Observable<any> {
+        return this.http.post<ApiResponse>(`${this.API}/devicegroup/${deviceGroup.id}`, deviceGroup, {headers:
+        {Authorization: `Bearer ${this.authService.getToken()}`,
+        'Content-Type': 'application/json'}});
+    }
 }

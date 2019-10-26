@@ -15,12 +15,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
+import {MatSliderModule} from '@angular/material/slider';
 @NgModule({
     imports: [MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatIconModule, MatCardModule,
               MatSidenavModule, MatListModule, MatTableModule, MatPaginatorModule, MatSelectModule, MatSlideToggleModule, MatTooltipModule,
-              MatProgressBarModule, MatDatepickerModule, MatNativeDateModule],
+              MatProgressBarModule, MatDatepickerModule, MatNativeDateModule, MatSliderModule],
     exports: [MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatIconModule, MatCardModule,
               MatSidenavModule, MatListModule, MatTableModule, MatPaginatorModule, MatSelectModule, MatSlideToggleModule, MatTooltipModule,
-              MatProgressBarModule, MatDatepickerModule, MatNativeDateModule]
+              MatProgressBarModule, MatDatepickerModule, MatNativeDateModule, MatSliderModule]
 })
 export class MaterialModule {}

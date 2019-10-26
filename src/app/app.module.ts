@@ -11,10 +11,13 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavListComponent } from '../app/pages/layout/navlist.component';
 import { FileUploadComponent } from './shared/file-upload/file-upload.component';
+import { RegionsComponent } from './pages/regions/regions.component';
+import { RegionFormComponent } from './pages/regions/forms/region.form.component';
 import { PageNotFoundComponent } from './shared/page-not-found.component';
 @NgModule({
   declarations: [
-    AppComponent, DashboardComponent, LayoutComponent, NavListComponent, FileUploadComponent, PageNotFoundComponent
+    LayoutComponent, AppComponent, DashboardComponent, NavListComponent, FileUploadComponent, PageNotFoundComponent,
+    RegionsComponent, RegionFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+.body {
+    min-height: 95vh;
+    overflow-y: scroll;
+}
+mat-card {
+    position: relative;
+    width: 90%;
+    left: 3%;
+    margin-top: 5%;;
+}
+table {
+    width: 100%;
+}
+mat-form-field {
+    width: 100%;
+}
+.form {
+    position: relative;
+    /*left: 20%;
+    right: 30%;*/
+}
+button {
+    position: relative;
+    left: 50%;
+}

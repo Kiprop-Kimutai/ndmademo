@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from './layout.service';
 import {Menu} from '../../models/menus';
+import { RouterOutlet } from '@angular/router';
+import { routeAnimation } from '../../shared/animations/route-animations';
+// import { routeAnimations } from '../../shared/animations/route.animations';
+import { ItemsRoutingService } from './layout-routing.service';
+import { Observable } from 'rxjs';
 @Component({
     selector: 'app-layout-component',
     templateUrl: './layout.component.html',
-    styleUrls: ['./layout.component.css']
+    styleUrls: ['./layout.component.css'],
+    animations: [routeAnimation]
 })
 export class LayoutComponent implements OnInit {
     sidenavMode = '';
@@ -12,7 +18,13 @@ export class LayoutComponent implements OnInit {
     loggedInuser = '';
     menus: Menu[];
     menu: Menu;
-    constructor(private menusService: MenuService) {}
+    itemChange$: Observable<any>;
+    routeTrigger$: Observable<any>;
+    constructor(private menusService: MenuService, private itemsRouting: ItemsRoutingService) {
+      this.itemChange$ = itemsRouting.itemChange$;
+      this.routeTrigger$ = this.itemChange$;
+
+    }
     loadSidenavProperties() {
         this.getScreenSize();
         this.sidenavMode = this.getScreenSize() < 820 ? 'over' : 'side';
@@ -22,10 +34,19 @@ export class LayoutComponent implements OnInit {
         return window.innerWidth;
       }
       loadMenus() {
-        this.menusService.fetchMenus().subscribe(data => {this.menus = data; console.log(this.menus);});
+        this.menusService.fetchMenus().subscribe(data => {this.menus = data; console.log(this.menus); });
       }
     ngOnInit() {
         this.loadSidenavProperties();
         this.loadMenus();
+    }
+    onMenuItemOpened(selectedMenu: Menu) {
+        console.log(selectedMenu);
+        this.menus.filter(menu => menu.name !== selectedMenu.name).forEach(menu => { menu.open = false; menu.caret = 'caret_down'; });
+    }
+    onAnimationEvent(event: AnimationEvent) {
+    }
+    prepareRoute(outlet: RouterOutlet) {
+      return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
     }
 }

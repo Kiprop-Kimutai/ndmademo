@@ -1,0 +1,52 @@
+.body {
+    width: 100%;
+    height: 95vh;
+    overflow-y: scroll;
+}
+mat-card {
+    position: relative;
+    width: 50%;
+    left: 20%;
+    right: 10%;
+    margin: 8px;
+    top: 10%;
+}
+mat-form-field {
+    width: 70%;
+    position: relative;
+    left: 20%;
+}
+mat-slider {
+    position: relative;
+    width: 65%;
+    left: 20%;
+}
+.co-ordinateValue {
+    position: relative;
+    left: 20%;
+}
+.co-ordinateLabel {
+    position: relative;
+    left: 20%;
+    font-weight:100;
+}
+.save-button {
+    left: 20%;
+}
+.cancel-button {
+    left: 70%;
+}
+
+@media only screen and (max-device-width: 600px) {
+    .body{
+        width: 200%;
+    }
+    .mat-card {
+        width: 100%;
+    }
+}
+@media only screen and (max-device-width: 1086px) {
+    .body{ 
+        width: 150%;
+    }
+}

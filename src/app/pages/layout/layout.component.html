@@ -9,10 +9,12 @@
     <div>
     <mat-drawer-container class = "mat-drawer-container">
     <mat-drawer mode = {{sidenavMode}}  [opened] = isSidenavOpened class = "mat-drawer" #drawer>
-    <app-navlist-component *ngFor = "let menu of menus" [menu] = menu></app-navlist-component>
+    <app-navlist-component *ngFor = "let menu of menus" [menu] = menu (openMenuItem) = "onMenuItemOpened($event)"></app-navlist-component>
     </mat-drawer>
-    <mat-drawer-content>
-    <router-outlet></router-outlet>
+    <mat-drawer-content class = "router-container" [@routeAnimations] = "outlet.isActivated && outlet.activatedRoute.snapshot.url && outlet.activatedRouteData.animation" (@routeAnimations.start) = "onAnimationEvent($event)" (@routeAnimations.done) = "onAnimationEvent($event)">
+        <div>
+            <router-outlet #outlet = "outlet"></router-outlet>
+        </div>
     </mat-drawer-content>
     </mat-drawer-container>
     </div>

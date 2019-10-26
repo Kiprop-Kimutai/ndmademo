@@ -17,22 +17,21 @@ export class AppLoginComponent implements OnInit {
     constructor(private router: Router, private fb: FormBuilder, private cd: ChangeDetectorRef, private messagingService: MessagingService,
                 private authService: AuthService) {
                     this.loginForm = this.fb.group({
-                        email: new FormControl('', [Validators.required, Validators.email]),
+                        email: new FormControl('', [Validators.required]),
                         password: new FormControl('', [Validators.required])
                     });
                 }
-
-
     ngOnInit() {
 
     }
-    send() {
+    login() {
     this.authService.login(this.loginForm.getRawValue()).subscribe(data => {
-        if (data.token) {
+        console.log(data);
+        /*if (data.token) {
             this.router.navigate(['/home']);
         } else {
         this.messagingService.alert('login failed');
-        }
+        }*/
     });
     }
     toggleVisibility() {
